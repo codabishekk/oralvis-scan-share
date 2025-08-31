@@ -1,11 +1,10 @@
-// OralVis Healthcare - Professional Dental Imaging System
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginForm } from "@/components/LoginForm";
 import { useAuth } from "@/contexts/AuthContext";
 
-const Index = () => {
-  const { user } = useAuth();
+export const LoginPage = () => {
+  const { user, login, isLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,17 +15,12 @@ const Index = () => {
       } else if (user.role === 'Dentist') {
         navigate('/dentist');
       }
-    } else {
-      navigate('/login');
     }
   }, [user, navigate]);
 
-  // Show loading while redirecting
-  return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-    </div>
-  );
-};
+  const handleLogin = async (email: string, password: string) => {
+    await login(email, password);
+  };
 
-export default Index;
+  return <LoginForm onLogin={handleLogin} isLoading={isLoading} />;
+};
