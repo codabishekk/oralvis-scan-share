@@ -1,4 +1,4 @@
-import { Activity, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
@@ -13,7 +13,11 @@ export const Header = ({ userRole, onLogout }: HeaderProps) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-white/20 rounded-lg">
-              <Activity className="h-6 w-6 text-white" />
+              <img 
+                src="/lovable-uploads/69c62c9c-be0b-4f32-bd5b-36fc6088cd99.png" 
+                alt="OralVis Healthcare Logo" 
+                className="h-6 w-6"
+              />
             </div>
             <div className="text-white">
               <h1 className="text-xl font-bold">OralVis Healthcare</h1>
